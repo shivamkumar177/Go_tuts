@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/csv"
 	"flag"
+	"fmt"
 	"os"
 )
 
@@ -13,5 +15,10 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	_ = file
+	csvReader := csv.NewReader(file)
+	records, err := csvReader.ReadAll()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("files data", records)
 }
