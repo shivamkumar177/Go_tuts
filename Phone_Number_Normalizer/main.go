@@ -6,7 +6,7 @@ import (
 )
 
 // implement the fucntion and write test for the fucntions
-func normalizePhoneNumbers(givenNumber []string) []string {
+func NormalizePhoneNumbers(givenNumber []string) []string {
 	normalizedNumber := make([]string, len(givenNumber))
 	for _, number := range givenNumber {
 		re := regexp.MustCompile("\\D")
@@ -26,5 +26,5 @@ func main() {
 		"1234567892",
 		"(123)456-7892",
 	}
-	fmt.Println(normalizePhoneNumbers(givenNumber))
+	fmt.Println(NormalizePhoneNumbers(givenNumber))
 }
