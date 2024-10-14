@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"regexp"
 )
@@ -15,6 +16,14 @@ func NormalizePhoneNumbers(givenNumber []string) []string {
 	return normalizedNumber
 }
 
+func createTable(db *sql.DB) {
+	query := fmt.Sprintf("CREATE TABLE IF NOT EXISTS playing_with_neon(id SERIAL PRIMARY KEY, name TEXT NOT NULL, value REAL);")
+	_, err := db.Exec(query)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
 	givenNumber := []string{
 		"1234567890",
@@ -27,4 +36,7 @@ func main() {
 		"(123)456-7892",
 	}
 	fmt.Println(NormalizePhoneNumbers(givenNumber))
+
+	db := DbConn()
+	createTable(db)
 }
