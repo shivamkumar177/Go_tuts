@@ -8,7 +8,7 @@ import (
 
 func DbConn() *sql.DB {
 	config := ParseConfig()
-	dbConnectionUrl := config.dbConnectionUrl
+	dbConnectionUrl := config.DbConnectionUrl
 	db, err := sql.Open("postgres", dbConnectionUrl)
 	if err != nil {
 		panic(err)

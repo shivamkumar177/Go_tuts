@@ -3,7 +3,7 @@ package main
 import "github.com/caarlos0/env/v11"
 
 type Config struct {
-	dbConnectionUrl string `env:"POSTGRES_CONN_URL"`
+	DbConnectionUrl string `env:"POSTGRES_CONN_URL"`
 }
 
 func ParseConfig() *Config {

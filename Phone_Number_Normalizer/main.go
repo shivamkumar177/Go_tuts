@@ -24,6 +24,19 @@ func createTable(db *sql.DB) {
 	}
 }
 
+func insertRec(db *sql.DB) (int64, error) {
+	query := "INSERT INTO playing_with_neon(name, value) values ('shivam', 23)"
+	res, err := db.Exec(query)
+	if err != nil {
+		panic(err)
+	}
+	lastInserted, err := res.LastInsertId()
+	if err != nil {
+		panic(err)
+	}
+	return lastInserted, nil
+}
+
 func main() {
 	givenNumber := []string{
 		"1234567890",
@@ -38,5 +51,5 @@ func main() {
 	fmt.Println(NormalizePhoneNumbers(givenNumber))
 
 	db := DbConn()
-	createTable(db)
+	insertRec(db)
 }
