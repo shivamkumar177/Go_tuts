@@ -7,7 +7,9 @@ import (
 )
 
 func DbConn() *sql.DB {
-	db, err := sql.Open("postgres", "postgresql://learn_db_owner:******@ep-muddy-sunset-a1lkdgwr.ap-southeast-1.aws.neon.tech/learn_db?sslmode=require")
+	config := ParseConfig()
+	dbConnectionUrl := config.dbConnectionUrl
+	db, err := sql.Open("postgres", dbConnectionUrl)
 	if err != nil {
 		panic(err)
 	}
